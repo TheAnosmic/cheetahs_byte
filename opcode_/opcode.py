@@ -1,5 +1,9 @@
 from node import Node
 
+# maybe it wasn't a good idea to make
+#   the opcode and it's arg separate.
+#   it made the need for "atoms",
+#   and didn't seem to have any advantage.
 
 class OPCode(Node):
     # if two underscores it makes problems with register

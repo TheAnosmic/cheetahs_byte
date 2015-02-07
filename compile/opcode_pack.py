@@ -16,9 +16,11 @@ MEM_PACK = REG_PACK + [MAC, MSM, MSC, MAM, PRM]
 
 ALLOWED_OPCODES = {
     1: PRT_ONLY,
+    'EASIEST': PRT_ONLY,
     2: PRT_AND_NOP,
     3: PNT_PACK,
     4: JMP_PACK,
     5: REG_PACK,
     6: MEM_PACK,
+    'HARDEST': MEM_PACK,
 }

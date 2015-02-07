@@ -1,10 +1,11 @@
+from compile import build_to_bytecode
 from compile.runner import run
 from compile.vm import RunnerVM
-from compile.opcode_pack import MEM_PACK
+from compile import ALLOWED_OPCODES
 from compile import compile_from_string
 
 if '__main__' == __name__:
-    opcodes = MEM_PACK
+    opcodes = ALLOWED_OPCODES['HARDEST']
     s = r"""
 __/\\\\\\\\\\\\\\\__/\\\______________________________________/\\\\\\\\\_____________________________________________________________________________________
  _\///////\\\/////__\/\\\____________________________________/\\\\\\\\\\\\\___________________________________________________________________________________
@@ -16,12 +17,12 @@ __/\\\\\\\\\\\\\\\__/\\\______________________________________/\\\\\\\\\________
        _______\/\\\_______\/\\\___\/\\\__\//\\\\\\\\\\___________\/\\\_______\/\\\_\/\\\___\/\\\__\///\\\\\/____/\\\\\\\\\\_\/\\\__\/\\\__\/\\\_\/\\\__\///\\\\\\\\_
         _______\///________\///____\///____\//////////____________\///________\///__\///____\///_____\/////_____\//////////__\///___\///___\///__\///_____\////////__
         """
-    nc = compile_from_string(s, allowed_opcodes=opcodes)
-    bytecode = nc.build()
+    node_chain = compile_from_string(s, allowed_opcodes=opcodes)
+    bytecode = build_to_bytecode(node_chain)
     vm = RunnerVM(bytecode)
     run(bytecode, vm)
     from compile.disassembler import disassemble
 
-    print '\n'.join(disassemble(nc))
+    print '\n'.join(disassemble(node_chain))
     print ' '.join(str(t) for t in vm.opcode_used)
     print vm.out

@@ -1,9 +1,9 @@
 from random import random, randint
 
-from compile.vm import MEMORY_SIZE
 from node.node_chain import NodeChain
 from opcode_ import OPCode, PrintOPCode
 from primitive import Byte
+from compile.vm import MEMORY_SIZE
 
 
 class MemOPCodes(OPCode):

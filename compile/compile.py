@@ -2,6 +2,7 @@ import random
 
 from break_to_atoms import break_to_atoms
 from jmp_add import add_jmp_opcodes, shuffle, make_chain_from_atoms
+from signature import SIGNATURE
 from node import NodeChain
 from opcode_.jmp_opcodes import JumpOPCodes
 from opcode_.print_opcode import PrintOPCode
@@ -52,3 +53,7 @@ def compile_from_string(string,
     link_to_real_address(nc)
     return nc
 
+
+def build_to_bytecode(nc,
+                      signature=SIGNATURE):
+    return signature + nc.build()

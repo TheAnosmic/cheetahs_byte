@@ -1,14 +1,31 @@
-ints are Big-Endian
-addresses are in bits
-Register is one register that holds
-    from 0 to 255
+ints are Big-Endian.
+
+addresses are in bits.
+
+Register is one register (memory place)
+ that can hold number from 0 to 255
+
 Memory is 256 bytes from 0-255
+
+Both memory and register starts
+  initialized to 0.
+
+Each opcode is one byte,
+  if JMP arg is 8, it goes right
+  to the opcode that starts at the
+  8th bit from the start of the bytecode (0).
+
+PRR opcode is only appears if
+  REG_PACK opcodes selected.
+  same for PRM with MEM_PACK.
+
+HLT opcode is always the last opcode.
 
 
 
 0000 print opcodes
     0001 PRT: print the next byte
-    0010 PNT: print not of the next byte
+    0010 PNT: print binary not of the next byte
 
     0100 PRR: print from Register
 

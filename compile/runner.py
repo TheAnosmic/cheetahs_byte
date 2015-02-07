@@ -1,4 +1,5 @@
 import struct
+from signature import test_signature, SIGNATURE
 
 from vm import RunnerVM
 from opcode_ import PRT, NOP, PNT, JMP, OPCode, HLT, RAD, PRR, RSB, MAC, PRM, MAM, MSC, MSM
@@ -124,7 +125,9 @@ handlers = {
 }
 
 
-def run(bytecode, runner_vm):
+def run(bytecode, runner_vm, signature=SIGNATURE):
+    test_signature(bytecode, signature)
+    bytecode = bytecode[len(signature):]
     runner_vm = runner_vm or RunnerVM(bytecode)
     runner_vm.pc = 0
     runner_vm.halt = False

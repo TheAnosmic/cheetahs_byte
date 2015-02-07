@@ -1,4 +1,5 @@
 from collections import deque
+from signature import SIGNATURE, test_signature
 
 MEMORY_SIZE = 256
 
@@ -10,8 +11,10 @@ class VM(object):
 
 
 class RunnerVM(VM):
-    def __init__(self, bytecode):
+    def __init__(self, bytecode, signature=SIGNATURE):
         super(RunnerVM, self).__init__()
+        test_signature(bytecode, signature)
+        bytecode = bytecode[len(signature):]
         self.pc = 0
         self.bytecode = bytecode
         self.halt = False

@@ -9,9 +9,9 @@ and according to the result that should be printed out after a successful run.
 
 How to use:
 ```
-    opcode_pack = MEM_PACK
-    node_chain = compile_from_string("Hello", allowed_opcodes=opcode_pack)
-    bytecode = node_chain.build()
+    opcodes = ALLOWED_OPCODES['HARDEST']
+    node_chain = compile_from_string("Hello", allowed_opcodes=opcodes)
+    bytecode = build_to_bytecode(node_chain)
 ```
 usage sample is also at the file run.py.
 
