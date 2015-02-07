@@ -1,0 +1,39 @@
+ints are Big-Endian
+addresses are in bits
+Register is one register that holds
+    from 0 to 255
+Memory is 256 bytes from 0-255
+
+
+
+0000 print opcodes
+    0001 PRT: print the next byte
+    0010 PNT: print not of the next byte
+
+    0100 PRR: print from Register
+
+    1000 PRM: print from Memory at location from next byte
+
+0001 jmp opcodes
+    0000 JMP: jmp to the address of the next int.
+
+0010 register opcodes
+    0000 RAD: add next byte to Register
+    0001 RSB: subtract next byte from Register
+
+0100 mem opcodes
+    0000 MAC: Memory add Const, arg is one byte mem, one byte const
+    0001 MSC: Memory sub Const, arg is one byte mem, one byte const
+
+    0010 MAM: Memory add Memory, arg is one byte src, one byte dst
+            :   will take the value in dst, add it to src, and save in src
+    0011 MSM: Memory sub Memory, arg is one byte src, one byte dst
+            :   will take the value in dst, sub it from src, and save in src
+
+
+1111 general opcodes
+    1110 NOP: do nothing
+    1111 HLT: program ended
+
+
+
